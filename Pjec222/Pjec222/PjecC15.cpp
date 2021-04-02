@@ -7,7 +7,7 @@ int main()
 	vector<int> v1, v2;
 	int count;
 	int input;
-	int i, j;
+	int i, j, k, t;
 	int max=0;
 	int n=0;
 
@@ -30,14 +30,24 @@ int main()
 		{
 			n += v1[j] * v2[j];
 		}
+		//cout << "n: " << n << endl;
 		if (n >= max)
 		{
 			max = n;
 		}
+
 		n = 0;
-		int temp = v1[0];
-		v1[0] = v1[count - 1];
-		v1[count - 1] = temp;
+		t = v1[count - 1];
+
+		for (k = 0; k < v1.size()-1; k++)
+		{
+			v1[count-1-k] = v1[count-2-k];
+		}
+		v1[0] = t;
+
+		/*for (vector<int>::iterator it = v1.begin(); it != v1.end(); it++)
+			cout << *it << " ";
+		cout << endl;*/
 	}
 
 	cout << max << endl;
